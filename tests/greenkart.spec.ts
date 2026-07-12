@@ -15,7 +15,6 @@ test("E2E flow", async ({ page }) => {
     await dashboardPage.goToCart();
     await dashboardPage.placeOrder();
 
-    await page.pause();
 
    
 
