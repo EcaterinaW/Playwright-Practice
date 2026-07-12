@@ -12,6 +12,9 @@ export class DashboardPage {
     cartIcon:Locator;
     proceedToCheckout:Locator;
     placeOrderButton:Locator;
+    countryDropdown:Locator;
+    agreeToTermsBox:Locator;
+    proceedButton:Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -35,6 +38,9 @@ export class DashboardPage {
         this.cartIcon = page.locator("a.cart-icon");
         this.proceedToCheckout = page.getByRole('button', {name:'PROCEED TO CHECKOUT'});
         this.placeOrderButton = page.getByRole('button', { name: 'Place Order' });
+        this.countryDropdown = page.getByRole('combobox');
+        this.agreeToTermsBox = page.getByRole('checkbox');
+        this.proceedButton = page.getByRole("button", {name: 'Proceed'});
     }
 
     async addCucumber() {
@@ -73,5 +79,17 @@ export class DashboardPage {
 
     async placeOrder(){
         await this.placeOrderButton.click();
+    }
+
+    async selectCountry(country:string){
+        await this.countryDropdown.selectOption(country);
+    }
+
+    async agreeToTerms(){
+        await this.agreeToTermsBox.check();
+    }
+
+    async proceed(){
+        await this.proceedButton.click();
     }
 }

@@ -14,6 +14,9 @@ test("E2E flow", async ({ page }) => {
     await dashboardPage.searchForProductAndAdd("Raspberry");
     await dashboardPage.goToCart();
     await dashboardPage.placeOrder();
+    await dashboardPage.selectCountry('Moldova');
+    await dashboardPage.agreeToTerms();
+    await dashboardPage.proceed();
 
     await page.pause();
 
